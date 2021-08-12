@@ -73,8 +73,9 @@ def df_hoods(district,year):
     req = requests.request("GET",url=url)
     values = json.loads(req.text)
     data = values["Population"][str(year)][district]
-    fig = plt.figure(figsize=(5,5))
+    fig = plt.figure()
     plt.bar(list(data.keys()), list(data.values()))
-    plt.xticks(rotation=90)
-    fig.savefig('temp.png', transparent=True)
-    return plt
+    plt.xticks(rotation=45)
+    fig.set_facecolor('#0f1117')
+    
+    return fig
