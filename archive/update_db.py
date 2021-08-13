@@ -20,9 +20,8 @@ def create_db(files):
         
 def clean_data(file):
     df = pd.read_csv("./archive/"+file)
-    df = df.drop_duplicates()
     try:
-        ages = ["05-09" if age == '5-9' else age for age in list(df["Age"])]
+        ages = ["05-09" if age == '5-9' else "04-05" if age == '0-4' else age for age in list(df["Age"])]
         df["Age"] = ages
     except:
         pass
