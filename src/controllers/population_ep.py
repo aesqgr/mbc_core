@@ -102,3 +102,6 @@ def district_hood_age_gender(district):
     q = lambda x,y,z: pd.DataFrame(list(population.find({"District_Name":district,"Neighborhood_Name":x, "Year":int(y),"Age":z},{"Gender":1,"Number":1, "_id":0}))).groupby("Gender")["Number"].sum()
     years_districts_hoods_age_gender = {str(year):{district:{hood:{age:q(hood,year,age).to_dict() for age in ages} for  hood in district_hoods[district]} for district in districts} for year in years} 
     return {"Population" : years_districts_hoods_age_gender}
+
+
+
